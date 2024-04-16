@@ -6,7 +6,7 @@ require("../passport");
 
 exports.index = async (req, res, next) => {
   try {
-    const messages = await Message.find();
+    const messages = await Message.find().populate("author");
     res.render("pages/index", { title: "Express", user: req.user, messages });
   } catch (err) {
     return next(err);
@@ -55,7 +55,7 @@ exports.user_register_post = async (req, res, next) => {
 exports.dashboard = async (req, res, next) => {
   if (req.isAuthenticated()) {
     try {
-      const messages = await Message.find();
+      const messages = await Message.find().populate("author");
       res.render("dashboard", { user: req.user, messages });
     } catch (err) {}
   } else {
