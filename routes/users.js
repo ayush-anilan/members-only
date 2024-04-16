@@ -4,6 +4,7 @@ const { body } = require("express-validator");
 
 // Required controller models
 const user_controller = require("../controllers/userController");
+const message_controller = require("../controllers/messageController");
 const passport = require("passport");
 
 // user routes
@@ -14,5 +15,9 @@ router.get("/register", user_controller.user_register_get);
 router.post("/register", user_controller.user_register_post);
 router.get("/dashboard", user_controller.dashboard);
 router.get("/logout", user_controller.logout);
+
+// message routes
+router.get("/dashboard/new", message_controller.new_message_get);
+router.post("/dashboard/new", message_controller.new_message_post);
 
 module.exports = router;

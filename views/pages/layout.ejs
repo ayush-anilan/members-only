@@ -15,8 +15,9 @@
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <ul class="nav justify-content-end">
+            <ul class="nav justify-content-end d-flex gap-3">
                 <% if(user) { %>
+                    <li class="nav-item"><a href="/users/dashboard">Dashboard</a></li>
                     <li class="nav-item"><a href="/users/logout">Logout</a></li>
                     <% } else { %>
                         <li class="nav-item">

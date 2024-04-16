@@ -1,9 +1,28 @@
 <%- include("./pages/layout.ejs") %>
-    <div class="container">
+    <div class="container col-10 d-flex flex-column gap-3 pt-3">
+        <div>
+            <h1>Messages</h1>
+            <p>Search for users or conversations</p>
+        </div>
+        <div class="col-12 p-5 border">
+            <% messages.forEach(message=> { %>
+                <div class="border col-4">
+                    <p>
+                        <%= user ? message.author : "Club Member" %>
+                    </p>
+                    <p>
+                        <%= user ? message.date : "" %>
+                    </p>
+                    <p>
+                        <%= message.content %>
+                    </p>
+                </div>
+                <% }) %>
 
-        <p>This is a secret page that is only available to logged-in users.
-            Congratulations!!! You are in on our secret!</p>
-        <% if (user) { %>
-            <a href="/users/logout">Log Out</a>
-            <% } %>
+        </div>
+        <div>
+            <a href="/users/dashboard/new">
+                <button type="submit" class="btn btn-primary">Create New Message</button>
+            </a>
+        </div>
     </div>

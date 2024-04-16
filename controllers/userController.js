@@ -1,10 +1,16 @@
 const User = require("../models/users");
+const Message = require("../models/messages");
 const passport = require("passport");
 const { hashSync } = require("bcryptjs");
 require("../passport");
 
 exports.index = async (req, res, next) => {
-  res.render("pages/index", { title: "Express", user: req.user });
+  try {
+    const messages = await Message.find();
+    res.render("pages/index", { title: "Express", user: req.user, messages });
+  } catch (err) {
+    return next(err);
+  }
 };
 
 exports.login_get = async (req, res, next) => {
@@ -48,7 +54,10 @@ exports.user_register_post = async (req, res, next) => {
 
 exports.dashboard = async (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.render("dashboard", { user: req.user });
+    try {
+      const messages = await Message.find();
+      res.render("dashboard", { user: req.user, messages });
+    } catch (err) {}
   } else {
     res.status(401).send({ msg: "Unauthorized" });
   }

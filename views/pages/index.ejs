@@ -4,8 +4,21 @@
   </h1>
   <p>Welcome to <%= title %>
   </p>
+  <% messages.forEach(message=> { %>
+    <div>
+      <p>
+        <%= user ? message.author : "Club Member" %>
+      </p>
+      <p>
+        <%= user ? message.date : "" %>
+      </p>
+      <p>
+        <%= message.content %>
+      </p>
+    </div>
+    <% }) %>
 
 
-  </body>
+      </body>
 
-  </html>
+      </html>
