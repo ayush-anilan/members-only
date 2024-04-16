@@ -1,24 +1,17 @@
 <%- include("./layout.ejs") %>
-  <h1>
-    <%= title %>
-  </h1>
-  <p>Welcome to <%= title %>
-  </p>
-  <% messages.forEach(message=> { %>
-    <div>
-      <p>
-        <%= user ? message.author.username : "Club Member" %>
-      </p>
-      <p>
-        <%= user ? message.date : "" %>
-      </p>
-      <p>
-        <%= message.content %>
-      </p>
-    </div>
-    <% }) %>
-
-
-      </body>
-
-      </html>
+  <div class="container">
+    <h2>Messages</h2>
+    <% messages.forEach(message=> { %>
+      <div>
+        <p>
+          <%= user ? message.author.username : " Club Member" %>
+        </p>
+        <p>
+          <%= user ? message.date : "" %>
+        </p>
+        <p>
+          <%= message.content %>
+        </p>
+      </div>
+      <% }) %>
+  </div>

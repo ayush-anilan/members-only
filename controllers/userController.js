@@ -46,7 +46,7 @@ exports.user_register_post = async (req, res, next) => {
     });
     const result = await user.save();
     console.log(result);
-    res.send({ succes: true });
+    res.redirect("login");
   } catch (err) {
     return next(err);
   }
